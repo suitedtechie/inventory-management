@@ -43,3 +43,36 @@ Join our [Discord community](https://discord.com/channels/1070200085440376872/12
 - [Data model diagram](https://drawsql.app/teams/team-3023/diagrams/56-inventorymanagement)
 - [Prisma schema file](https://github.com/ed-roh/inventory-management/blob/master/server/prisma/schema.prisma)
 - [AWS commands](https://github.com/ed-roh/inventory-management/blob/master/server/aws-ec2-instructions.md)
+
+### Starting locally
+
+- **Postgres setup**
+  - Install pgAdmin
+  - Create a server in pgAdmin
+  - Create a database in pgAdmin
+- **Seed data population**
+
+  - create a .env file within the server directory
+  - add DATABASE_URL="postgresql://<username>:<password>@localhost:5432/<dbname>?schema=public"
+  - navigate to server directory
+  - run the command: npx prisma migrate dev --name init
+  - run the command: npx prisma generate
+  - run the command: npm run seed
+
+- **Starting the server**
+
+  - navigate to the server directory
+  - run the command: npm install
+  - run the command: npm run dev
+  - test the server by running the command: curl localhost:3001/dashboard
+
+- **Starting the client**
+
+  - create a .env.local file
+  - Add NEXT_PUBLIC_API_BASE_URL="http://localhost:3001"
+  - navigate to the client directory
+  - run the command: npm install
+  - run the command: npm run dev
+
+- **Creating a new migration file**
+- npx prisma migrate dev --create-only
